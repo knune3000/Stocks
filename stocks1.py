@@ -15,7 +15,7 @@ filtered_data = [{
     "day low": data1["Global Quote"]["04. low"],
     "volume": data1["Global Quote"]["06. volume"],
     "previous close": data1["Global Quote"]["08. previous close"],
-    "trading day": data1["Global Quote"]["07. latest trading day"]
+    "Trading Date": data1["Global Quote"]["07. latest trading day"]
 }]
 
 table = tabulate(filtered_data, headers = "keys")
