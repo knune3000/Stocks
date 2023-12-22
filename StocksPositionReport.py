@@ -3,6 +3,7 @@
 import requests
 from tabulate import tabulate
 import random
+import database
 
 api_url_1 = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=EMANGPF3LHEM5J6T"
 api_url_2 = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=AAPL&apikey=EMANGPF3LHEM5J6T"
@@ -23,8 +24,10 @@ else:
 filtered_data = [{
     "Stock Symbol": data2["Symbol"],
     "Current Price": data1["Global Quote"]["05. price"],
+    "Purchase Price": data1["Global Quote"]["05. price"],
     "52 Wk High": data2["52WeekHigh"],
-    "Qty": random.randint(1,200),
+    "Qty": database.user_qty,
+    "Total Cost Basis": round(database.user_qty * float(data1["Global Quote"]["05. price"]), 2),
     "Profit/Loss": profit + " of " + data1["Global Quote"]["09. change"],
     "Profit/Loss %": data1["Global Quote"]["10. change percent"]    
 }]
